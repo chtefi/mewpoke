@@ -173,7 +173,7 @@ public class CouchbaseMonitor implements AutoCloseable {
             final String ipaddr = nodeToInetAddress(n).toString().split("/")[1];
             final ObjectMapper objectMapper = new ObjectMapper();
 
-            final String uri = "/pools/default/buckets/" + this.bucket.name() + "/nodes/" + ipaddr + "/stats";
+            final String uri = "/pools/default/buckets/" + this.bucket.name() + "/nodes/" + n.hostname().hostname() + "/stats";
             final JsonNode jsonBucketStatsNode;
             try {
                 final RestApiResponse BucketStatsNode = api.get(uri).execute();
